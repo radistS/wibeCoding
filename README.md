@@ -14,6 +14,11 @@ A basic Spring Boot REST application to convert amounts between a small set of c
 mvn spring-boot:run
 ```
 
+
+## Swagger UI
+After starting the application, open:
+- `http://localhost:8080/swagger-ui.html`
+
 ## API
 ### Convert currency
 **POST** `/api/currency/convert`
@@ -36,4 +41,16 @@ Example response:
   "convertedAmount": 8333.33,
   "exchangeRate": 83.33333333
 }
+```
+
+## Sync with `main`
+To keep your feature branch aligned and avoid merge conflicts:
+```bash
+git fetch origin
+git rebase origin/main
+```
+If conflicts occur, resolve them and continue:
+```bash
+git add .
+git rebase --continue
 ```

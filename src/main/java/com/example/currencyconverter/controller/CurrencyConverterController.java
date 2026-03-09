@@ -3,7 +3,10 @@ package com.example.currencyconverter.controller;
 import com.example.currencyconverter.model.ConversionRequest;
 import com.example.currencyconverter.model.ConversionResponse;
 import com.example.currencyconverter.service.CurrencyConversionService;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
+import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.MethodArgumentNotValidException;
@@ -19,15 +22,14 @@ import java.util.Map;
 
 @RestController
 @RequestMapping("/api/currency")
+@RequiredArgsConstructor
+@Tag(name = "Currency Converter", description = "Endpoints for currency conversion")
 public class CurrencyConverterController {
 
     private final CurrencyConversionService conversionService;
 
-    public CurrencyConverterController(CurrencyConversionService conversionService) {
-        this.conversionService = conversionService;
-    }
-
     @PostMapping("/convert")
+    @Operation(summary = "Convert currency amount", description = "Converts amount from one currency code to another")
     public ConversionResponse convert(@Valid @RequestBody ConversionRequest request) {
         BigDecimal rate = conversionService.getRate(request.getFrom(), request.getTo());
         BigDecimal converted = conversionService.convert(request.getFrom(), request.getTo(), request.getAmount());
