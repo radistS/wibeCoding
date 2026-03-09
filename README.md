@@ -47,3 +47,15 @@ Example response:
   "exchangeRate": 83.33333333
 }
 ```
+
+## Sync with `main`
+To keep your feature branch aligned and avoid merge conflicts:
+```bash
+git fetch origin
+git rebase origin/main
+```
+If conflicts occur, resolve them and continue:
+```bash
+git add .
+git rebase --continue
+```
