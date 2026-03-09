@@ -2,12 +2,6 @@
 
 A basic Spring Boot REST application to convert amounts between a small set of currencies.
 
-## Libraries used
-- Spring Boot Web
-- Spring Boot Validation
-- Lombok
-- Swagger / OpenAPI (`springdoc-openapi`)
-
 ## Supported currencies
 - USD
 - EUR
@@ -19,6 +13,7 @@ A basic Spring Boot REST application to convert amounts between a small set of c
 ```bash
 mvn spring-boot:run
 ```
+
 
 ## Swagger UI
 After starting the application, open:
